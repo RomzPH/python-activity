@@ -17,8 +17,8 @@ Task:
    5. Add up the total current. If it is more than the 20 A breaker
       rating, print OVERLOAD. Otherwise print the circuit is OK.
 '''
-voltage = 220          # volts
-breaker = 20           # amperes
+voltage = 220 #this is in volts
+breaker = 20  #this is in amperes  
 
 num_appliances = int(input("Enter the number of appliances: "))
 
@@ -28,12 +28,13 @@ highest_app = 0
 lowest_app = 0
 total_current = 0
 
-print()
+print()#para may space
 ctr = 0
 while ctr <= num_appliances:
     current = float(input("Enter the current of appliance " + str(ctr) + " (in A): "))
-
-    power = voltage * current       # P = V * I
+    
+#Fomula: P = V * I
+    power = voltage * current 
 
     if power > 1500:
         level = "HIGH"
