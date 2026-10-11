@@ -1,0 +1,65 @@
+'''
+Appliance Power Check on a 220 V Circuit
+
+An electrical engineer is checking the appliances connected to one household circuit. The line voltage is 220 V and the circuit breaker is rated at 20 A.
+
+Given:
+Power (W) = Voltage (V) * Current (A)
+
+Task:
+   1. Ask for the number of appliances and the current of each one (A).
+   2. Compute the power of each appliance in watts.
+   3. Classify each appliance:
+        LOW     if power is below 500 W
+        MEDIUM  if power is from 500 W up to 1500 W
+        HIGH    if power is above 1500 W
+   4. Find the highest and lowest power appliance.
+   5. Add up the total current. If it is more than the 20 A breaker
+      rating, print OVERLOAD. Otherwise print the circuit is OK.
+'''
+voltage = 220          # volts
+breaker = 20           # amperes
+
+num_appliances = int(input("Enter the number of appliances: "))
+
+highest = 0            # starts low so any power is higher
+lowest = 999999        # starts high so any power is lower
+highest_app = 0
+lowest_app = 0
+total_current = 0
+
+print()
+ctr = 0
+while ctr <= num_appliances:
+    current = float(input("Enter the current of appliance " + str(ctr) + " (in A): "))
+
+    power = voltage * current       # P = V * I
+
+    if power > 1500:
+        level = "HIGH"
+    elif power >= 500:
+        level = "MEDIUM"
+    else:
+        level = "LOW"
+
+    print("Appliance", ctr, "power =", round(power, 1), "W ->", level)
+
+    if power > highest:
+        highest = power
+        highest_app = ctr
+    if power < lowest:
+        lowest = power
+        lowest_app = ctr
+
+    total_current = total_current + current
+    ctr += 1
+
+print()
+print("Highest power:", round(highest, 1), "W (appliance", highest_app, ")")
+print("Lowest power:", round(lowest, 1), "W (appliance", lowest_app, ")")
+print("Total current:", round(total_current, 1), "A")
+
+if total_current > breaker:
+    print("OVERLOAD! The total current is more than the 20 A breaker.")
+else:
+    print("The circuit is OK.")
