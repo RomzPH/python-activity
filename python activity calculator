@@ -29,7 +29,7 @@ lowest_app = 0
 total_current = 0
 
 print()#para may space
-ctr = 0
+ctr = 1
 while ctr <= num_appliances:
     current = float(input("Enter the current of appliance " + str(ctr) + " (in A): "))
     
